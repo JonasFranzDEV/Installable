@@ -1,5 +1,7 @@
 package de.jonasfranz.Installable;
 
+import de.jonasfranz.Installable.types.*;
+
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -26,6 +28,20 @@ public class InstallManager {
             }
         }
         return fields;
+    }
+
+    private static boolean init = false;
+
+    public static void initDefaultHandlers() {
+        if (!init) {
+            new SDouble();
+            new SFloat();
+            new SInteger();
+            new SList();
+            new SLocation();
+            new SString();
+        }
+
     }
 
 

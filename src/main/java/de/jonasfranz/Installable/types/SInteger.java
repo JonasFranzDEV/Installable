@@ -3,8 +3,8 @@ package de.jonasfranz.Installable.types;
 
 import de.jonasfranz.Installable.InstallHandler;
 import de.jonasfranz.Installable.InstallPlugin;
+import de.jonasfranz.Installable.InstanceManager;
 import de.jonasfranz.Installable.command.InstallCommandManager;
-import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
 
@@ -28,8 +28,8 @@ public class SInteger extends InstallHandler {
     }
 
     @Override
-    protected void start(Field f, Player who) {
-        who.sendMessage("Please set the value while enter /install integer <value>");
+    protected void start(Field f, String who) {
+        InstanceManager.instance.sendMessage(who, "Please set the value while enter /install integer <value>");
     }
 
     @Override

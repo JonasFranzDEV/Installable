@@ -1,11 +1,11 @@
 package de.jonasfranz.Installable.bukkit;
 
 
+import de.jonasfranz.Installable.InstallHandler;
 import de.jonasfranz.Installable.InstallManager;
 import de.jonasfranz.Installable.Installabel;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -37,9 +37,7 @@ public class InventoryMenu implements Listener {
             s.setItemMeta(meta);
             inv.setItem(item_nr, s);
             item_nr++;
-            System.out.println(game);
         }
-        System.out.println(inv.toString());
         return inv;
     }
 
@@ -59,13 +57,13 @@ public class InventoryMenu implements Listener {
             Object obj;
             if (Installabel.handlers.containsKey(f.getType())) {
 
-                str.add("Aktuell: " + ((obj = f.get(InstallManager.items.get(game))) != null ? Installabel.handlers.get(f.getType()).serialize(obj, f) : "-Nicht gesetzt-"));
+                str.add("Value: " + ((obj = f.get(InstallManager.items.get(game))) != null ? Installabel.handlers.get(f.getType()).serialize(obj, f) : "-Not set-"));
 
                 meta.setLore(str);
                 s.setItemMeta(meta);
                 inv.setItem(nr, s);
             } else {
-                Bukkit.broadcastMessage("Es konnte keine Möglichkeit gefunden werden " + f.getType().getName() + " im Spiel zu setzen.");
+                Bukkit.broadcastMessage("There is a problem. (like a bug)");
             }
 
             nr++;
@@ -100,8 +98,11 @@ public class InventoryMenu implements Listener {
                         break;
                     }
                     System.out.println(f.getName());
+
                     if (Installabel.handlers.containsKey(f.getType())) {
-                        Installabel.handlers.get(f.getType()).startGUI(new InstallHandler.InstallField(f, InstallManager.items.get(c.getInventory().getTitle().replace("#", ""))), (Player) c.getWhoClicked());
+                        InstallHandler handler = Installabel.handlers.get(f.getType());
+
+                        handler.startGUI(new InstallHandler.InstallField(f, InstallManager.items.get(c.getInventory().getTitle().replace("#", ""))), c.getWhoClicked().getName());
                     } else {
                         Bukkit.broadcastMessage("Es konnte keine Möglichkeit gefunden werden " + f.getType().getName() + " im Spiel zu setzen.");
                     }

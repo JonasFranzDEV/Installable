@@ -3,11 +3,11 @@ package de.jonasfranz.Installable.types;
 import com.google.gson.Gson;
 import de.jonasfranz.Installable.InstallHandler;
 import de.jonasfranz.Installable.InstallPlugin;
+import de.jonasfranz.Installable.InstanceManager;
 import de.jonasfranz.Installable.command.InstallCommandManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
 
@@ -53,8 +53,8 @@ public class SLocation extends InstallHandler {
 
 
     @Override
-    public void start(Field f, Player who) {
-        who.sendMessage("Got to the location and enter /install location");
+    public void start(Field f, String who) {
+        InstanceManager.instance.sendMessage(who, "Got to the location and enter /install location");
 
     }
 

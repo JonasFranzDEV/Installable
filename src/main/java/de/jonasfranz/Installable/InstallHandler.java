@@ -2,7 +2,6 @@ package de.jonasfranz.Installable;
 
 import lombok.AccessLevel;
 import lombok.Getter;
-import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
@@ -19,7 +18,7 @@ public abstract class InstallHandler {
     @Getter
     Class<?> forClass;
     @Getter(AccessLevel.PUBLIC)
-    protected final LinkedHashMap<Player, InstallField> context = new LinkedHashMap<>();
+    protected final LinkedHashMap<String, InstallField> context = new LinkedHashMap<>();
     protected final LinkedHashMap<Field, InstallField> toInstallField = new LinkedHashMap<>();
 
     public InstallHandler(Class<?> forClass) {
@@ -28,13 +27,13 @@ public abstract class InstallHandler {
         this.forClass = forClass;
     }
 
-    public void startGUI(InstallField f, Player who) {
+    public void startGUI(InstallField f, String who) {
         this.context.put(who, f);
         this.toInstallField.put(f.field, f);
         start(f.field, who);
     }
 
-    protected abstract void start(Field f, Player who);
+    protected abstract void start(Field f, String who);
 
     public abstract String serialize(Object obj);
 

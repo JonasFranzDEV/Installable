@@ -1,9 +1,6 @@
 package de.jonasfranz.Installable.bungee;
 
-import de.jonasfranz.Installable.InstallHandler;
-import de.jonasfranz.Installable.InstallManager;
-import de.jonasfranz.Installable.InstallPlugin;
-import de.jonasfranz.Installable.Installabel;
+import de.jonasfranz.Installable.*;
 import de.jonasfranz.Installable.command.InstallCommandManager;
 import lombok.Getter;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -17,13 +14,20 @@ import java.lang.reflect.Field;
 
 
 public class BungeeInstallPlugin extends Plugin implements InstallPlugin {
-    private BungeeCommandManager cmdManager = new BungeeCommandManager();
+
     @Getter
     private Configuration config;
 
     @Override
     public void onEnable() {
-        getProxy().getPluginManager().registerCommand(this, cmdManager);
+        InstanceManager.instance = this;
+
+        InstallManager.initDefaultHandlers();
+        //Register default-Command
+        if (getProxy().getPluginManager().getPlugin("Installable") == null) {
+            getProxy().getPluginManager().registerCommand(this, BungeeInstanceManager.cmdManager);
+        }
+        //Restore values from config.yml
         try {
             if (!getDataFolder().exists())
                 getDataFolder().mkdir();
@@ -92,7 +96,7 @@ public class BungeeInstallPlugin extends Plugin implements InstallPlugin {
 
     @Override
     public InstallCommandManager getCommandManager() {
-        return cmdManager;
+        return BungeeInstanceManager.cmdManager;
     }
 
     @Override

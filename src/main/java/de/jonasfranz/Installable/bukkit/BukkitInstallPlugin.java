@@ -9,13 +9,18 @@ import java.lang.reflect.Field;
 
 
 public class BukkitInstallPlugin extends JavaPlugin implements InstallPlugin {
-    private BukkitCommandManager cmdManager = new BukkitCommandManager();
+
 
     @Override
     public void onEnable() {
         InstanceManager.instance = this;
-        getCommand("install").setExecutor(cmdManager);
+
+        InstallManager.initDefaultHandlers();
+        //Register the default command
+        if (getCommand("install") != null && getServer().getPluginManager().getPlugin("Installable") == null)
+            getCommand("install").setExecutor(BukkitInstanceManager.cmdManager);
         getServer().getPluginManager().registerEvents(new InventoryMenu(), this);
+        //Restore saved values
         if (getConfig().getConfigurationSection("save") != null) {
 
             for (String key : InstallManager.items.keySet()) {
@@ -44,6 +49,7 @@ public class BukkitInstallPlugin extends JavaPlugin implements InstallPlugin {
 
     @Override
     public void onDisable() {
+        //Save values to config.yml
         for (String key : InstallManager.items.keySet()) {
             Installabel i = InstallManager.items.get(key);
 
@@ -64,7 +70,7 @@ public class BukkitInstallPlugin extends JavaPlugin implements InstallPlugin {
 
     @Override
     public InstallCommandManager getCommandManager() {
-        return cmdManager;
+        return BukkitInstanceManager.cmdManager;
     }
 
     @Override
