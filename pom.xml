@@ -6,7 +6,7 @@
 
     <groupId>de.jonasfranz</groupId>
     <artifactId>Installable</artifactId>
-    <version>1.0 #${env.TRAVIS_BUILD_NUMBER}-SNAPSHOT</version>
+    <version>1.0.${env.TRAVIS_BUILD_NUMBER}-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Installabl-Library</name>
     <description>This is a lightweight Library that helps developers to create faster plugins with configurations.
