@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/JonasFranzDEV/Installable.svg?branch=master)](https://travis-ci.org/JonasFranzDEV/Installable)
 # Installable
 This is a lightweight Library that helps developers to create faster plugins with configurations. 
 
