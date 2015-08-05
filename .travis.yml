@@ -2,6 +2,9 @@ language: java
 install: true
 jdk:
 - oraclejdk8
+branches:
+  except:
+    - settings
 before_deploy:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
