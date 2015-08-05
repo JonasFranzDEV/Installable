@@ -27,6 +27,24 @@ Fügen Sie dies zu Ihrer pom.xml datei hinzu:
   </dependency>
 </dependencies>
 ```
+*Wenn Sie Development-Builds verwenden wollen, nutzen Sie:*
+```xml
+<repositories>
+  <repository>
+    <id>snapshots</id>
+    <url>http://maven.dein-plugin.de/nexus/content/repositories/snapshots</url>
+  </repository>
+</repositories>
+
+<dependencies>
+  <dependency>
+    <groupId>de.jonasfranz</groupId>
+    <artifactId>Installable</artifactId>
+    <version>1.0.18-SNAPSHOT</version>
+    <scope>provided</scope>
+  </dependency>
+</dependencies>
+```
 #### Integriert
 Fügen Sie dies zu Ihrer pom.xml hinzu. Fügen Sie außerdem das maven-shade-plugin hinzu, und konfigurieren Sie dieses.
 ```xml
@@ -42,6 +60,23 @@ Fügen Sie dies zu Ihrer pom.xml hinzu. Fügen Sie außerdem das maven-shade-plu
     <groupId>de.jonasfranz</groupId>
     <artifactId>Installable</artifactId>
     <version>LATEST</version>
+  </dependency>
+</dependencies>
+```
+*Wenn Sie Development-Builds verwenden wollen, nutzen Sie:*
+```xml
+<repositories>
+  <repository>
+    <id>snapshots</id>
+    <url>http://maven.dein-plugin.de/nexus/content/repositories/snapshots</url>
+  </repository>
+</repositories>
+
+<dependencies>
+  <dependency>
+    <groupId>de.jonasfranz</groupId>
+    <artifactId>Installable</artifactId>
+    <version>1.0.18-SNAPSHOT</version>
   </dependency>
 </dependencies>
 ```
