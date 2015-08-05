@@ -1,5 +1,0 @@
-name: Installable
-version: ${project.version}
-author: Jonas Franz
-
-main: de.jonasfranz.Installable.bungee.PlaceHolderPlugin
