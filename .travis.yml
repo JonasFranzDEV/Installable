@@ -1,5 +1,11 @@
 language: java
 jdk:
-  - oraclejdk8
-addons:
-  artifacts: true
+- oraclejdk8
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: k4/vEIydEiA5iEOjviMti7zpcFTqYhkby6xotD8SSwaF3M+BU3p8oJbmk+yYwKN/K5Emypu6FOZpfsVCfimEmGmYzJXCex/JHyiRRnluMeAVzQ+kpR2Ee2QW1K8Y3C6VqiCDja2CwQoUJZfUtX5lnN5fgcfLoNrYcukVbcXz3jXKWtPjEECaVgMn2Zjw9uuBVzQYFqAYloqQn4mHdctTszzcQLmETY5FCTMxnUU55TiVSmCGYzwZF/ZktBzJ91niuz3ZbkgzKZdgJVfFqXh0se9nzcr7TYx66hqUkONQ7Iz8DO8UfAox5wMp6I72lEEDnm454xauYTLgvCYrRedkRh4Ny71SU/1sTQm2rPXpPeIMLW8R49y6ITAqhgct4ZoXpc3pntScHPOcDKPzhLOj3NwddjN/XryDd6Wa8pqSIZ1fiMYeXbJhu1T+UDE2ZyojI04YjgpBHFnKeMF0O+UUSNpKuVe3zZL5tSH6dho93YB2c/spYMko+6Zsau4A/sv13dZfe172lId6t7DQbPuzACTFQzk/YK0DjOWept/wX7+yHZ5E6V8yvjV0VPixwkkpE8WU3wfF7+stvsP9IOAa48JqDWYP1qPZa7G4BmMqVbyKGlfk8gD2uyu27kvfPhP0mS+rbY3BP8w8P6zShXkSCT3Uir2ov2CFkRL6xedXSmg=
+  file: Installable Library.jar
+  on:
+    repo: JonasFranzDEV/Installable
