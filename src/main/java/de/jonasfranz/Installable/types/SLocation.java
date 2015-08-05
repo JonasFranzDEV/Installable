@@ -54,7 +54,7 @@ public class SLocation extends InstallHandler {
 
     @Override
     public void start(Field f, String who) {
-        InstanceManager.instance.sendMessage(who, "Got to the location and enter /install location");
+        InstanceManager.instance.sendMessage(who, "Go to the location and enter /install location");
 
     }
 
