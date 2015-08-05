@@ -34,6 +34,19 @@
         <url>git@github.com:JonasFranzDEV/Installable.git</url>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>deinplugin-nexus-snapshots</id>
+            <name>Internal Releases</name>
+            <url>http://maven.dein-plugin.de/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>deinplugin-nexus-snapshots</id>
+            <name>Internal Releases</name>
+            <url>http://maven.dein-plugin.de/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 
     <repositories>
         <repository>
