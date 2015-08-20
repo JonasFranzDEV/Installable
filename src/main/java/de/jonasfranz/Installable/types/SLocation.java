@@ -15,13 +15,14 @@ import java.lang.reflect.Field;
 public class SLocation extends InstallHandler {
     public static class Holder {
         private double x, y, z;
+        private float pitch = 0.0F, yaw = 0.0F;
         private String world;
 
         public Location toLocation() {
             World w = Bukkit.getWorld(world);
             if (w == null)
                 return null;
-            Location toRet = new Location(w, x, y, z);
+            Location toRet = new Location(w, x, y, z, yaw, pitch);
             return toRet;
         }
 
@@ -29,6 +30,8 @@ public class SLocation extends InstallHandler {
             x = loc.getX();
             y = loc.getY();
             z = loc.getZ();
+            pitch = loc.getPitch();
+            yaw = loc.getYaw();
             world = loc.getWorld().getName();
             return this;
         }

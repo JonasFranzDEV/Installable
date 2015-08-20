@@ -1,6 +1,7 @@
 package de.jonasfranz.Installable.bukkit;
 
 import de.jonasfranz.Installable.*;
+import de.jonasfranz.Installable.bukkit.utils.BookGUI;
 import de.jonasfranz.Installable.command.InstallCommandManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +21,7 @@ public class BukkitInstallPlugin extends JavaPlugin implements InstallPlugin {
         if (getCommand("install") != null && getServer().getPluginManager().getPlugin("Installable") == null)
             getCommand("install").setExecutor(BukkitInstanceManager.cmdManager);
         getServer().getPluginManager().registerEvents(new InventoryMenu(), this);
+        if (!BookGUI.isRegistered) getServer().getPluginManager().registerEvents(new BookGUI(), this);
         //Restore saved values
         if (getConfig().getConfigurationSection("save") != null) {
 
@@ -44,6 +46,7 @@ public class BukkitInstallPlugin extends JavaPlugin implements InstallPlugin {
             }
 
         }
+
         super.onEnable();
     }
 

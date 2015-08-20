@@ -77,7 +77,7 @@ public class InventoryMenu implements Listener {
         if (c.getInventory() != null && c.getInventory().getTitle() != null && c.getInventory().getTitle().startsWith("#")) {
             c.setCancelled(true);
             c.setResult(Event.Result.DENY);
-            if (!c.getCurrentItem().getType().equals(Material.GLASS)) {
+            if (c.getCurrentItem() == null || c.getCurrentItem().getType() == null || !c.getCurrentItem().getType().equals(Material.GLASS)) {
                 return;
             }
             c.getWhoClicked().closeInventory();
