@@ -3,6 +3,9 @@ install: true
 jdk:
 - oraclejdk8
 before_install: git clone -b master `git config --get remote.origin.url` target/master
+branches:
+  only:
+    - release
 script: mvn deploy --settings target/master/settings.xml
 before_deploy:
 - git config --global user.email "builds@travis-ci.com"
@@ -18,8 +21,8 @@ deploy:
     secure: k4/vEIydEiA5iEOjviMti7zpcFTqYhkby6xotD8SSwaF3M+BU3p8oJbmk+yYwKN/K5Emypu6FOZpfsVCfimEmGmYzJXCex/JHyiRRnluMeAVzQ+kpR2Ee2QW1K8Y3C6VqiCDja2CwQoUJZfUtX5lnN5fgcfLoNrYcukVbcXz3jXKWtPjEECaVgMn2Zjw9uuBVzQYFqAYloqQn4mHdctTszzcQLmETY5FCTMxnUU55TiVSmCGYzwZF/ZktBzJ91niuz3ZbkgzKZdgJVfFqXh0se9nzcr7TYx66hqUkONQ7Iz8DO8UfAox5wMp6I72lEEDnm454xauYTLgvCYrRedkRh4Ny71SU/1sTQm2rPXpPeIMLW8R49y6ITAqhgct4ZoXpc3pntScHPOcDKPzhLOj3NwddjN/XryDd6Wa8pqSIZ1fiMYeXbJhu1T+UDE2ZyojI04YjgpBHFnKeMF0O+UUSNpKuVe3zZL5tSH6dho93YB2c/spYMko+6Zsau4A/sv13dZfe172lId6t7DQbPuzACTFQzk/YK0DjOWept/wX7+yHZ5E6V8yvjV0VPixwkkpE8WU3wfF7+stvsP9IOAa48JqDWYP1qPZa7G4BmMqVbyKGlfk8gD2uyu27kvfPhP0mS+rbY3BP8w8P6zShXkSCT3Uir2ov2CFkRL6xedXSmg=
   file: target/Installable-Library.jar
   on:
-    tags: true
-    all_branches: true
+    tags: false
+    branch: release
 env:
   global:
   - secure: 0hyK6Np6hFeKqU1whX89i/fp+OmaWTrJrhUAVr0hBVk1VUlhIDi93TGStdGDXu2o7FAmifLoRZKjStBnfj5cRPKxRbLq3GwYwtWIwk2rrD5i0POpwX918Ot7V+iR2bnmUBxGXgMzsGLcN2b24R+B+9BOLQ/OuXEzwsIlz7mRk0G92ebC707GsO80849H5ynPK0Nxg2D6RoVoR7g8tMpO4cTSnl2GCb7yuJdVtSGoEm3BNeSV9qEcADxzCam64rVHWnBmk9yG3oVd8Z5ZOlm3KA8zd9YPLtDhXPadImFAygWSXX2W9jawPky8URiaTis/ZS+kCag5DXscaYvCzCr/ETGctG5b/BJ9fsUHA217lafmrwMkHQ97sBPCOmww+iSkkXXICH2xiY37cGyPl0jeSvxz0h8oF91qQqjW3vc0zTwQEJJHWv4qXeFORtvdJ6zrhIFdCbR+d44j91CoCx7bqw+N/MnWk1Z+KlYjkNN1KnM7x+YpDcOSZmh9vitx4LbVEZpYA6ItNkmc91FjOnWeuoWHuy/uwYmDSLfdqGRC7+r3ZY9Jfo14yI3DPGO9SU49zn7+uLfyysYN7QgerWl48xunwPhOYZ3e6W7JHuX3U+BrcnFKyuhpEkhYFmuZ3hfc+Nx8+TD0qn4dPRUh3xl8lxte9JDbKnjx0p7C92m+V10=
