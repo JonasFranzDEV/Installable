@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 public class SDouble extends InstallHandler {
 
     public SDouble() {
-        super(Double.class);
+        super(Double.class, double.class);
         InstallPlugin.instance.getCommandManager().registerArgument("double", new InstallCommandManager.InstallArgument() {
             @Override
             public void execute(String[] args, String sender) {

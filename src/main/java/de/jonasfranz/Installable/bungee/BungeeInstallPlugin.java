@@ -104,4 +104,12 @@ public class BungeeInstallPlugin extends Plugin implements InstallPlugin {
         getProxy().getPlayer(to).sendMessage(msg);
     }
 
+    protected String install_command = "install";
+
+
+    @Override
+    public String getInstallCommand() {
+        return install_command;
+    }
+
 }

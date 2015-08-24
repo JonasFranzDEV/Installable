@@ -10,8 +10,8 @@ script: mvn deploy --settings target/master/settings.xml
 before_deploy:
 - git config --global user.email "builds@travis-ci.com"
 - git config --global user.name "Travis CI"
-- export GIT_TAG=1.1.$TRAVIS_BUILD_NUMBER
-- git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+- export GIT_TAG=$TRAVIS_BRANCH-1.1.$TRAVIS_BUILD_NUMBER
+- git tag $GIT_TAG -a -m "Generated Build $TRAVIS_BUILD_NUMBER"
 - git push -q https://$TAGPERM@github.com/JonasFranzDEV/Installable --tags
 - ls -R
 deploy:

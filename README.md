@@ -82,7 +82,8 @@ Fügen Sie dies zu Ihrer pom.xml hinzu. Fügen Sie außerdem das maven-shade-plu
 ```
 ### Ohne Maven
 #### Standalone
-Fügen Sie die JAR-Datei zum Buildpath hinzu. In Eclipse nutzen Sie dazu Properties > Java Build Path > Add external jar
+Fügen Sie die JAR-Datei zum Buildpath hinzu. In Eclipse nutzen Sie dazu Properties > Java Build Path > Add external jar.
+Die JAR-Datei finden Sie unter ["Releases"](https://github.com/JonasFranzDEV/Installable/releases/latest/) 
 ## Installation
 Nachdem Sie nun die Library hinzugefügt haben, können Sie beginnen das Plugin auf die Library anzupassen. Alles was Sie dazu tun müssen, wird hier erläutert:
 

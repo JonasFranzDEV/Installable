@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 public class SFloat extends InstallHandler {
 
     public SFloat() {
-        super(Float.class);
+        super(Float.class, float.class);
         InstallPlugin.instance.getCommandManager().registerArgument("float", new InstallCommandManager.InstallArgument() {
             @Override
             public void execute(String[] args, String sender) {
