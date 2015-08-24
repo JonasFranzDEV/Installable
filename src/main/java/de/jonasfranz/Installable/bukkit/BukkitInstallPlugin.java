@@ -80,4 +80,12 @@ public class BukkitInstallPlugin extends JavaPlugin implements InstallPlugin {
     public void sendMessage(String to, String msg) {
         Bukkit.getPlayer(to).sendMessage(msg);
     }
+
+    protected String install_command = "install";
+
+
+    @Override
+    public String getInstallCommand() {
+        return install_command;
+    }
 }

@@ -19,4 +19,6 @@ public interface InstallPlugin {
     public void sendMessage(String to, String msg);
 
     public static InstallPlugin instance = InstanceManager.instance;
+
+    public String getInstallCommand();
 }

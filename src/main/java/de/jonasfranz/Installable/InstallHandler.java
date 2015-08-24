@@ -21,10 +21,14 @@ public abstract class InstallHandler {
     protected final LinkedHashMap<String, InstallField> context = new LinkedHashMap<>();
     protected final LinkedHashMap<Field, InstallField> toInstallField = new LinkedHashMap<>();
 
-    public InstallHandler(Class<?> forClass) {
-        Installabel.handlers.put(forClass, this);
-        Installabel.sHandlers.put(forClass.getName(), this);
-        this.forClass = forClass;
+    public InstallHandler(Class<?>... forClass) {
+        if (forClass.length <= 0) throw new IllegalArgumentException("Class is missing");
+        for (Class<?> c : forClass) {
+            Installabel.handlers.put(c, this);
+            Installabel.sHandlers.put(c.getName(), this);
+        }
+
+        this.forClass = forClass[0];
     }
 
     public void startGUI(InstallField f, String who) {
