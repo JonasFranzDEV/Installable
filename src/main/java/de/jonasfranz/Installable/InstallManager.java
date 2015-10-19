@@ -38,7 +38,7 @@ public class InstallManager {
             new SFloat();
             new SInteger();
             new SList();
-            new SLocation();
+            new SBoolean();
             new SString();
         }
 

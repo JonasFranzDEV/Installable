@@ -72,6 +72,8 @@ public class BookGUI implements Listener {
                 p.getInventory().clear();
                 p.getInventory().addItem(book);
             } else {
+                p.getInventory().clear();
+                p.getInventory().setContents(invBackup.get(p));
                 players.remove(p);
                 invBackup.remove(p);
             }

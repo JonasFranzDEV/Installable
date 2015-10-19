@@ -19,7 +19,7 @@ public class SList extends InstallHandler {
 
     public SList() {
         super(List.class);
-        InstallPlugin.instance.getCommandManager().registerArgument("string", new InstallCommandManager.InstallArgument() {
+        InstallPlugin.instance.getCommandManager().registerArgument("list", new InstallCommandManager.InstallArgument() {
             @Override
             public void execute(String[] args, String sender) {
                 if (!context.containsKey(sender)) {

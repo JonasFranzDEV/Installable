@@ -26,6 +26,7 @@ public class BungeeInstallPlugin extends Plugin implements InstallPlugin {
         //Register default-Command
         if (getProxy().getPluginManager().getPlugin("Installable") == null) {
             getProxy().getPluginManager().registerCommand(this, BungeeInstanceManager.cmdManager);
+            getProxy().getPluginManager().registerCommand(this, new BungeeEditCommand());
         }
         //Restore values from config.yml
         try {
