@@ -135,3 +135,6 @@ public class IhrPlugin extends BukkitInstallPlugin implements Installabel{
 ```
 5) Der Rest wird von der Library gemacht. Exportieren Sie das Plugin und starten Sie Ihren Server. Geben Sie /install ein, um das Plugin zu testen.
 
+
+===TODO
+* BungeeCord-Support Verbessern
