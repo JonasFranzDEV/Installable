@@ -12,14 +12,14 @@ import java.util.LinkedHashMap;
 public class BukkitCommandManager implements InstallCommandManager, CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
-        if (!sender.isOp() && !sender.hasPermission("Installable.admin")){
+        if (!sender.isOp() && !sender.hasPermission("Installable.admin")) {
             sender.sendMessage("§cPermission denied.");
             return false;
         }
         if (args.length < 1) {
             if (sender instanceof Player) {
                 ((Player) sender).openInventory(InventoryMenu.getMenu());
-            }else{
+            } else {
                 sender.sendMessage("Only a player can open an inventory.");
             }
         } else {
