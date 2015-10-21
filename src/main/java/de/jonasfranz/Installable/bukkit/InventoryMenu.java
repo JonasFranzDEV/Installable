@@ -19,6 +19,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class InventoryMenu implements Listener {
+    public static boolean isRegistered = false;
+
+    public InventoryMenu() {
+        isRegistered = true;
+    }
     public static Inventory getMenu() {
 
         int inv_size = 9;
@@ -73,7 +78,7 @@ public class InventoryMenu implements Listener {
 
     @EventHandler
     public void onHandle(InventoryClickEvent c) {
-        if (!c.getWhoClicked().hasPermission("Arcade.admin")) return;
+        if (!c.getWhoClicked().hasPermission("Installable.admin") && !c.getWhoClicked().isOp()) return;
         if (c.getInventory() != null && c.getInventory().getTitle() != null && c.getInventory().getTitle().startsWith("#")) {
             c.setCancelled(true);
             c.setResult(Event.Result.DENY);
