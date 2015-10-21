@@ -24,6 +24,7 @@ public class InstallManager {
         LinkedList<Field> fields = new LinkedList<Field>();
         for (Field f : i.getClass().getDeclaredFields()) {
             if (f.isAnnotationPresent(Installabel.Install.class)) {
+                f.setAccessible(true);
                 fields.add(f);
             }
         }
@@ -31,6 +32,7 @@ public class InstallManager {
         while ((parent = parent.getSuperclass()) != Object.class) {
             for (Field f : parent.getDeclaredFields()) {
                 if (f.isAnnotationPresent(Installabel.Install.class)) {
+                    f.setAccessible(true);
                     fields.add(f);
                 }
             }
