@@ -27,6 +27,14 @@ public class InstallManager {
                 fields.add(f);
             }
         }
+        Class parent = i.getClass();
+        while ((parent = parent.getSuperclass()) != Object.class) {
+            for (Field f : parent.getDeclaredFields()) {
+                if (f.isAnnotationPresent(Installabel.Install.class)) {
+                    fields.add(f);
+                }
+            }
+        }
         return fields;
     }
 

@@ -20,7 +20,7 @@ public class BukkitInstallPlugin extends JavaPlugin implements InstallPlugin {
         InstallManager.initDefaultHandlers();
 
         //Register the default command
-        if (getCommand("install") != null && getServer().getPluginManager().getPlugin("Installable") == null && getCommand("install").getExecutor() == null)
+        if (getCommand("install") != null && getServer().getPluginManager().getPlugin("Installable") == null && !(getCommand("install").getExecutor() instanceof BukkitCommandManager))
             getCommand("install").setExecutor(BukkitInstanceManager.cmdManager);
         if (!InventoryMenu.isRegistered) getServer().getPluginManager().registerEvents(new InventoryMenu(), this);
         if (!BookGUI.isRegistered) getServer().getPluginManager().registerEvents(new BookGUI(), this);
