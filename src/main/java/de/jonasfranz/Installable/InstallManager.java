@@ -9,8 +9,15 @@ import java.util.List;
 
 
 public class InstallManager {
+    @Deprecated
     public static LinkedHashMap<String, Installabel> items = new LinkedHashMap<String, Installabel>();
+    public static LinkedHashMap<String, String> plugins = new LinkedHashMap<>();
 
+    public static void registerInstallabel(Installabel i, String name, String plugin) {
+        items.put(name, i);
+        plugins.put(name, plugin);
+    }
+    
 
     public static Field getField(String key, String name) {
         for (Field f : getFields(items.get(key))) {

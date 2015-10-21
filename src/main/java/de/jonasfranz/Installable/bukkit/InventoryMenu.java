@@ -37,7 +37,8 @@ public class InventoryMenu implements Listener {
             ItemMeta meta = s.getItemMeta();
             meta.setDisplayName(game);
             LinkedList<String> str = new LinkedList<>();
-            str.add(InstallManager.getFields(InstallManager.items.get(game)).size() + " Settings");
+            str.add("§6" + InstallManager.getFields(InstallManager.items.get(game)).size() + " §8Settings");
+            if (InstallManager.plugins.containsKey(game)) str.add("§8» §6" + InstallManager.plugins.get(game));
             meta.setLore(str);
             s.setItemMeta(meta);
             inv.setItem(item_nr, s);
