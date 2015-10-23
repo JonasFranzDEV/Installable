@@ -9,8 +9,15 @@ import java.util.List;
 
 
 public class InstallManager {
+    @Deprecated
     public static LinkedHashMap<String, Installabel> items = new LinkedHashMap<String, Installabel>();
+    public static LinkedHashMap<String, String> plugins = new LinkedHashMap<>();
 
+    public static void registerInstallabel(Installabel i, String name, String plugin) {
+        items.put(name, i);
+        plugins.put(name, plugin);
+    }
+    
 
     public static Field getField(String key, String name) {
         for (Field f : getFields(items.get(key))) {
@@ -24,7 +31,17 @@ public class InstallManager {
         LinkedList<Field> fields = new LinkedList<Field>();
         for (Field f : i.getClass().getDeclaredFields()) {
             if (f.isAnnotationPresent(Installabel.Install.class)) {
+                f.setAccessible(true);
                 fields.add(f);
+            }
+        }
+        Class parent = i.getClass();
+        while ((parent = parent.getSuperclass()) != Object.class) {
+            for (Field f : parent.getDeclaredFields()) {
+                if (f.isAnnotationPresent(Installabel.Install.class)) {
+                    f.setAccessible(true);
+                    fields.add(f);
+                }
             }
         }
         return fields;
@@ -38,7 +55,7 @@ public class InstallManager {
             new SFloat();
             new SInteger();
             new SList();
-            new SLocation();
+            new SBoolean();
             new SString();
         }
 

@@ -19,7 +19,7 @@ public class SList extends InstallHandler {
 
     public SList() {
         super(List.class);
-        InstallPlugin.instance.getCommandManager().registerArgument("string", new InstallCommandManager.InstallArgument() {
+        InstallPlugin.instance.getCommandManager().registerArgument("list", new InstallCommandManager.InstallArgument() {
             @Override
             public void execute(String[] args, String sender) {
                 if (!context.containsKey(sender)) {
@@ -27,7 +27,7 @@ public class SList extends InstallHandler {
                     return;
                 }
                 InstallField f = context.get(sender);
-                f.set((args[1]));
+                f.set(lists.get(sender));
                 InstallPlugin.instance.sendMessage(sender, "Saved.");
             }
         });
@@ -86,7 +86,7 @@ public class SList extends InstallHandler {
                 deList.add(h.serialize(o));
             }
         } else {
-            System.err.println("§cError: It was not found a matching handler.");
+            System.err.println("§cError: It could not found a matching handler.");
             return "[]";
         }
         String[] save = deList.toArray(new String[deList.size()]);

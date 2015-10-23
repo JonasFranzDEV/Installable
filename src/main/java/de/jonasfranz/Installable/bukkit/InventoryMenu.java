@@ -19,6 +19,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class InventoryMenu implements Listener {
+    public static boolean isRegistered = false;
+
+    public InventoryMenu() {
+        isRegistered = true;
+    }
     public static Inventory getMenu() {
 
         int inv_size = 9;
@@ -32,7 +37,8 @@ public class InventoryMenu implements Listener {
             ItemMeta meta = s.getItemMeta();
             meta.setDisplayName(game);
             LinkedList<String> str = new LinkedList<>();
-            str.add(InstallManager.getFields(InstallManager.items.get(game)).size() + " Settings");
+            str.add("§6" + InstallManager.getFields(InstallManager.items.get(game)).size() + " §8Settings");
+            if (InstallManager.plugins.containsKey(game)) str.add("§8» §6" + InstallManager.plugins.get(game));
             meta.setLore(str);
             s.setItemMeta(meta);
             inv.setItem(item_nr, s);
@@ -73,7 +79,7 @@ public class InventoryMenu implements Listener {
 
     @EventHandler
     public void onHandle(InventoryClickEvent c) {
-        if (!c.getWhoClicked().hasPermission("Arcade.admin")) return;
+        if (!c.getWhoClicked().hasPermission("Installable.admin") && !c.getWhoClicked().isOp()) return;
         if (c.getInventory() != null && c.getInventory().getTitle() != null && c.getInventory().getTitle().startsWith("#")) {
             c.setCancelled(true);
             c.setResult(Event.Result.DENY);

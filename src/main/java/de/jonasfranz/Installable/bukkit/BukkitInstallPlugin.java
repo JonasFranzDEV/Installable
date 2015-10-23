@@ -3,6 +3,7 @@ package de.jonasfranz.Installable.bukkit;
 import de.jonasfranz.Installable.*;
 import de.jonasfranz.Installable.bukkit.utils.BookGUI;
 import de.jonasfranz.Installable.command.InstallCommandManager;
+import de.jonasfranz.Installable.types.SLocation;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,12 +16,13 @@ public class BukkitInstallPlugin extends JavaPlugin implements InstallPlugin {
     @Override
     public void onEnable() {
         InstanceManager.instance = this;
-
+        new SLocation();
         InstallManager.initDefaultHandlers();
+
         //Register the default command
-        if (getCommand("install") != null && getServer().getPluginManager().getPlugin("Installable") == null)
+        if (getCommand("install") != null && getServer().getPluginManager().getPlugin("Installable") == null && !(getCommand("install").getExecutor() instanceof BukkitCommandManager))
             getCommand("install").setExecutor(BukkitInstanceManager.cmdManager);
-        getServer().getPluginManager().registerEvents(new InventoryMenu(), this);
+        if (!InventoryMenu.isRegistered) getServer().getPluginManager().registerEvents(new InventoryMenu(), this);
         if (!BookGUI.isRegistered) getServer().getPluginManager().registerEvents(new BookGUI(), this);
         //Restore saved values
         if (getConfig().getConfigurationSection("save") != null) {
